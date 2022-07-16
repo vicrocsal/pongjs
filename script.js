@@ -66,6 +66,8 @@ let game = () => {
 
   let play = () => {
     moveBar();
+    moveBall();
+    checkIfLost();
   };
 
   /*
@@ -120,29 +122,48 @@ let game = () => {
     }
   }
 
-/*
+   /*
+   *
+   *Función que controla cuando el hay una anotación
+   */
+
+  function checkIfLost(){
+    if(ball.offsetLeft >= width){
+        stop();
+        console.log("punto player 1");
+    }
+    if(ball.offsetLeft <= 0){
+        stop();
+        console.log("punto player 2");
+    }
+}
+
+  /*
    *
    *Funciones que controlan el choque con las barras
    *
    */
-  function collidePlayer1(){
-    if(ball.offsetLeft <= (bar1.clientWidth) &&
-       ball.offsetTop >= bar1.offsetTop &&
-       ball.offsetTop <= (bar1.offsetTop + bar1.clientHeight)){
-        return true;
+  function collidePlayer1() {
+    if (
+      ball.offsetLeft <= bar1.clientWidth &&
+      ball.offsetTop >= bar1.offsetTop &&
+      ball.offsetTop <= bar1.offsetTop + bar1.clientHeight
+    ) {
+      return true;
     }
 
     return false;
-}
-function collidePlayer2(){
-    if(ball.offsetLeft >= (width-bar2.clientWidth) &&
-       ball.offsetTop >= bar2.offsetTop &&
-       ball.offsetTop <= (bar2.offsetTop + bar2.clientHeight)){
-        return true;
+  }
+  function collidePlayer2() {
+    if (
+      ball.offsetLeft >= width - bar2.clientWidth &&
+      ball.offsetTop >= bar2.offsetTop &&
+      ball.offsetTop <= bar2.offsetTop + bar2.clientHeight
+    ) {
+      return true;
     }
     return false;
-
-}
+  }
 
   /*
    *
@@ -186,6 +207,8 @@ function collidePlayer2(){
         break;
     }
   };
+
+
 
   /*
    *
