@@ -19,7 +19,15 @@ let game = () => {
   let player1;
   let player2;
 
-  let start = () => {};
+  /*
+ *
+ *Función que inicia el juego
+ *
+ */
+
+  let start = () => {
+    init();
+  };
 
   /*
  *
