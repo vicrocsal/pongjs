@@ -27,6 +27,7 @@ let game = () => {
 
   let start = () => {
     init();
+    controlGame = setInterval(play, time);
   };
 
   /*
@@ -47,4 +48,20 @@ let game = () => {
     player2.keyCode = null;
 
   };
+
+  let stop = () => {
+    clearInterval(controlGame);
+    document.body.style.background = "#f00";
+
+  }
+
+  let play = () => {
+    
+  }
+
+  start();
+
+
 };
+
+game();
